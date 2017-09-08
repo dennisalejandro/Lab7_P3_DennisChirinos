@@ -224,7 +224,7 @@ int main() {
 							S2 = Army2->at(opSq2B);
 							if ((S1->getATK()) >= (S2->getDEF()*10)) {
 								winner = false;
-								cout << "El escuadron" << S1->getID() << " Gano la batalla\n";
+								cout << "El escuadron " << S1->getID() << " Gano la batalla\n";
 							} else {
 								cout << "El escuadron defendio sucesivamente\n";
 							}
@@ -242,7 +242,7 @@ int main() {
 							S4 = Army2->at(opSq1B);
 							if ((S1->getATK()) >= (S2->getDEF()*10)) {
 								winner = false;
-								cout << "El escuadron" << S3->getID() << " Gano la batalla\n";
+								cout << "El escuadron " << S3->getID() << " Gano la batalla\n";
 							} else {
 								cout << "El escuadron de retaguardia defendio sucesivamente\n";
 							}

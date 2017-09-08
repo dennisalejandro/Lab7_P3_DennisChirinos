@@ -88,7 +88,7 @@ int main() {
 								cout << "No se pudo agregar, escuadron no existe\n";
 							}
 						} else {
-						
+							cout << "No se pudo agregar, ejercito no existe\n";
 						}
 						
 					}
@@ -169,7 +169,7 @@ int main() {
 				}
 				break;
 			case 4: {
-					if (numSq >= 4) { 
+					if ((numSq >= 2)&&(numSq2 >= 2)) { 
 						isPossible = true;
 						int Power1 = 0;
 						int Power2 = 0;

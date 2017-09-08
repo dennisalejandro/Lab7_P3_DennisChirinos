@@ -26,6 +26,11 @@ int main() {
 	int opSq1A = 0;
 	int opSq1B = 0;
 	int opSq2A = 0;
+	try {
+
+	} catch (const std::exception& e) {
+    		cout << "excepciono\n";
+	}
 	int opSq2B = 0;
 	bool isPossible = false;
 	while (op!=5) {
@@ -71,17 +76,17 @@ int main() {
 						cin >> Precision;
 						Arquero* Ar = new Arquero(Nombre, Ciudad, Edad, Flechas, Precision);
 						if (opA == 1) {
-							if (opB >= 0) {
+							try {
 								Army1->at(opB)->vSoldados->push_back(Ar);
-							} else {
+							} catch (const std::exception& e) {
 								cout << "No se pudo agregar, escuadron no existe\n";
 							}
 						} else if (opA == 2) {
-							if (opB >= 0) {
+							try {
 								Army2->at(opB)->vSoldados->push_back(Ar);
-							} else {
+							} catch (const std::exception& e) {
 								cout << "No se pudo agregar, escuadron no existe\n";
-							}	
+							}
 						} else {
 						
 						}
@@ -101,9 +106,17 @@ int main() {
 						cin >> Lanzas;
 						Coraza* Co = new Coraza(Nombre, Ciudad, Edad, Dureza, Lanzas);
 						if (opA == 1) {
-							Army1->at(opB)->vSoldados->push_back(Co);
+							try {
+								Army1->at(opB)->vSoldados->push_back(Co);
+							} catch (const std::exception& e) {
+								cout << "No se pudo agregar, escuadron no existe\n";
+							}
 						} else if (opA == 2) {
-							Army2->at(opB)->vSoldados->push_back(Co);
+							try {
+								Army2->at(opB)->vSoldados->push_back(Co);
+							} catch (const std::exception& e) {
+								cout << "No se pudo agregar, escuadron no existe\n";
+							}
 						} else {
 						
 						}
@@ -122,9 +135,17 @@ int main() {
 						cin >> Skills;
 						Asesino* As = new Asesino(Nombre, Ciudad, Edad, Kills, Skills);
 						if (opA == 1) {
-							Army1->at(opB)->vSoldados->push_back(As);
+							try {
+								Army1->at(opB)->vSoldados->push_back(As);
+							} catch (const std::exception& e) {
+								cout << "No se pudo agregar, escuadron no existe\n";
+							}
 						} else if (opA == 2) {
-							Army2->at(opB)->vSoldados->push_back(As);
+							try {
+								Army2->at(opB)->vSoldados->push_back(As);
+							} catch (const std::exception& e) {
+								cout << "No se pudo agregar, escuadron no existe\n";
+							}
 						} else {
 						
 						}
@@ -132,12 +153,14 @@ int main() {
 				}
 				break;
 			case 3:
+				cout << "Ejercito 1: \n";
 				for (int i = 0;i < Army1->size();i++) {
 					cout << "Army 1, Squad: " << i << "\n";
 					for (int j = 0;j<Army1->at(i)->vSoldados->size();j++) {
 						cout << j << ") " << Army1-> at(i) -> vSoldados-> at(j) ->getNombre() << "\n";
 					}
 				}
+				cout << "Ejercito 2: \n";
 				for (int i = 0;i < Army2->size();i++) {
 					cout << "Army 2, Squad: " << i << "\n";
 					for (int j = 0;j<Army2->at(i)->vSoldados->size();j++) {
@@ -266,3 +289,4 @@ int Menu2() {
 	cin >> op;
 	return op;
 }
+// 

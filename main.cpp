@@ -17,6 +17,7 @@ int main() {
 	vector<Squad*>* Army2 = new vector<Squad*>();
 	int Sq1Num=0;
 	int Sq2Num=0;
+	int numSq=0;
 	int op = 0;
 	int opA = 0;
 	int opB = 0;
@@ -36,10 +37,12 @@ int main() {
 						Squad* A = new Squad(0,0,Sq1Num);
 						Sq1Num++;
 						Army1->push_back(A);
+						numSq++;
 					} else if (opA == 2) {
 						Squad* B = new Squad(0,0,Sq2Num);
 						Sq2Num++;
 						Army2->push_back(B);
+						numSq++;
 					} else {
 						
 					}
@@ -142,81 +145,85 @@ int main() {
 				}
 				break;
 			case 4: {
-					isPossible = true;
-					int Power1 = 0;
-					int Power2 = 0;
-					int Def1 = 0;
-					int Def2 = 0;
-					if ((Army1->size()) < 1) {
-						isPossible = false;
-					}
-					if ((Army2->size()) < 1) {
-						isPossible = false;
-					}
-					for (int i = 0;i < Army1->size();i++) {
-						for (int j = 0;j < Army1->at(i)->vSoldados->size();j++) {
-							Power1 += Army1->at(i)->vSoldados->at(j)->ATK();
-							cout << "Power: " << Army1->at(i)->vSoldados->at(j)->ATK() << "\n";
+					if (numSq >= 4) { 
+						isPossible = true;
+						int Power1 = 0;
+						int Power2 = 0;
+						int Def1 = 0;
+						int Def2 = 0;
+						if ((Army1->size()) < 1) {
+							isPossible = false;
 						}
-						for (int j = 0;j < Army1->at(i)->vSoldados->size();j++) {
-							Def1 += Army1->at(i)->vSoldados->at(j)->DEF();
-							cout << "Defense: " << Army1->at(i)->vSoldados->at(j)->DEF() << "\n";
+						if ((Army2->size()) < 1) {
+							isPossible = false;
 						}
-						cout << "El poder de ataque del escuadron " << i << " es: " << Power1 << "\n";
-						cout << "El poder de defensa del escuadron " << i << " es: " << Def1 << "\n";
-						Army1->at(i)->setATK(Power1);
-						Army1->at(i)->setDEF(Def1);
-						Power1 = 0;
-						Def1 = 0;
-					}
+						for (int i = 0;i < Army1->size();i++) {
+							for (int j = 0;j < Army1->at(i)->vSoldados->size();j++) {
+								Power1 += Army1->at(i)->vSoldados->at(j)->ATK();
+								cout << "Power: " << Army1->at(i)->vSoldados->at(j)->ATK() << "\n";
+							}
+							for (int j = 0;j < Army1->at(i)->vSoldados->size();j++) {
+								Def1 += Army1->at(i)->vSoldados->at(j)->DEF();
+								cout << "Defense: " << Army1->at(i)->vSoldados->at(j)->DEF() << "\n";
+							}
+							cout << "El poder de ataque del escuadron " << i << " es: " << Power1 << "\n";
+							cout << "El poder de defensa del escuadron " << i << " es: " << Def1 << "\n";
+							Army1->at(i)->setATK(Power1);
+							Army1->at(i)->setDEF(Def1);
+							Power1 = 0;
+							Def1 = 0;
+						}
 					
-					for (int i = 0;i < Army2->size();i++) {
-						for (int j = 0;j < Army2->at(i)->vSoldados->size();j++) {
-							Power2 += Army2->at(i)->vSoldados->at(j)->ATK();
-							cout << "Power: " << Army2->at(i)->vSoldados->at(j)->ATK() << "\n";
+						for (int i = 0;i < Army2->size();i++) {
+							for (int j = 0;j < Army2->at(i)->vSoldados->size();j++) {
+								Power2 += Army2->at(i)->vSoldados->at(j)->ATK();
+								cout << "Power: " << Army2->at(i)->vSoldados->at(j)->ATK() << "\n";
+							}
+							cout << "El poder de ataque del escuadron " << i << " es: " << Power2 << "\n";
+							Army2->at(i)->setATK(Power2);
+							Power2 = 0;
 						}
-						cout << "El poder de ataque del escuadron " << i << " es: " << Power2 << "\n";
-						Army2->at(i)->setATK(Power2);
-						Power2 = 0;
-					}
-					bool winner = true;
-					Squad* S1;
-					Squad* S2;
-					Squad* S3;
-					Squad* S4;
-					while (winner) {
-						cout << "Army 1 Select your Attack Squad: " << "\n";
-						cin >> opSq1A;
+						bool winner = true;
+						Squad* S1;
+						Squad* S2;
+						Squad* S3;
+						Squad* S4;
+						while (winner) {
+							cout << "Army 1 Select your Attack Squad: " << "\n";
+							cin >> opSq1A;
 						
-						cout << "Army 2 Select your Defense Squad: " << "\n";
-						cin >> opSq2B;
+							cout << "Army 2 Select your Defense Squad: " << "\n";
+							cin >> opSq2B;
 						
-						S1 = Army1->at(opSq1A);
-						S2 = Army2->at(opSq2B);
-						if ((S1->getATK()) > (S2->getDEF()*10)) {
-							winner = false;
-							cout << "El escuadron" << S1->getID() << "Gano la batalla\n";
-						} else {
-							cout << "El escuadron defendio sucesivamente\n";
-						}
-						cout << "Army 2 Select your Attack Squad: " << "\n";
-						cin >> opSq2A;
+							S1 = Army1->at(opSq1A);
+							S2 = Army2->at(opSq2B);
+							if ((S1->getATK()) >= (S2->getDEF()*10)) {
+								winner = false;
+								cout << "El escuadron" << S1->getID() << " Gano la batalla\n";
+							} else {
+								cout << "El escuadron defendio sucesivamente\n";
+							}
+							cout << "Army 2 Select your Attack Squad: " << "\n";
+							cin >> opSq2A;
 
-						cout << "Army 1 Select your Defense Squad: " << "\n";
-						cin >> opSq1B;
-						S3 = Army1->at(opSq2A);
-						S4 = Army2->at(opSq1B);
-						if ((S1->getATK()) > (S2->getDEF()*10)) {
-							winner = false;
-							cout << "El escuadron" << S3->getID() << "Gano la batalla\n";
-						} else {
-							cout << "El escuadron de retaguardia defendio sucesivamente\n";
+							cout << "Army 1 Select your Defense Squad: " << "\n";
+							cin >> opSq1B;
+							S3 = Army1->at(opSq2A);
+							S4 = Army2->at(opSq1B);
+							if ((S1->getATK()) >= (S2->getDEF()*10)) {
+								winner = false;
+								cout << "El escuadron" << S3->getID() << " Gano la batalla\n";
+							} else {
+								cout << "El escuadron de retaguardia defendio sucesivamente\n";
+							}
 						}
+						delete S1;
+						delete S2;
+						delete S3;
+						delete S4;
+					} else {
+						cout << "No hay mas de 4 escuadrones \n";
 					}
-					delete S1;
-					delete S2;
-					delete S3;
-					delete S4;					
 				}				
 				break;
 			case 5:

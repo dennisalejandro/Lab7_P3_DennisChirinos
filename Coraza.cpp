@@ -14,7 +14,11 @@ using namespace std;
 		this->Lanzas = a;
 	}
 	int Coraza::getDureza() {
-		return this->Dureza;
+		if (this->Dureza <= 10) {
+			return this->Dureza;
+		} else {
+			return 10;
+		}
 	}
 	int Coraza::getLanzas() {
 		return this->Lanzas;

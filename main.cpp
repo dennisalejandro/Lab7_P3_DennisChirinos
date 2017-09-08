@@ -266,12 +266,14 @@ int main() {
 		for (int j = 0;j<Army1->at(i)->vSoldados->size();j++) {
 			delete Army1->at(i)->vSoldados->at(j);
 		}
+		delete Army1->at(i)->vSoldados;
 		delete Army1->at(i);
 	}
 	for (int i = 0;i < Army2->size();i++) {
 		for (int j = 0;j<Army2->at(i)->vSoldados->size();j++) {
 			delete Army2->at(i)->vSoldados->at(j);
 		}
+		delete Army1->at(i)->vSoldados;
 		delete Army2->at(i);
 	}
 	delete Army1;

@@ -8,8 +8,9 @@
 #include <string>
 #include <iostream>
 #include <vector>
-//#include <>
+//#include "HerbertEsBuenaPersonaYMeVaADar10.h"
 using namespace std;
+//prototipos
 int Menu();
 int Menu2();
 int main() {
@@ -277,7 +278,7 @@ int Menu() {
 	cout << "3) Listar Ejercito\n";
 	cout << "4) Simulacion!\n";
 	cout << "5) Salir\n";
-	cout << "\n";
+	cout << "----------------------\n";
 	cin >> op;
 	return op;
 }

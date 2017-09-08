@@ -228,6 +228,11 @@ int main() {
 							} else {
 								cout << "El escuadron defendio sucesivamente\n";
 							}
+							if (!winner) {
+								for (int i = 0;i<S2->vSoldados->size();i++) {
+									S2->vSoldados->pop_back();
+								}
+							}
 							cout << "Army 2 Select your Attack Squad: " << "\n";
 							cin >> opSq2A;
 
@@ -240,6 +245,11 @@ int main() {
 								cout << "El escuadron" << S3->getID() << " Gano la batalla\n";
 							} else {
 								cout << "El escuadron de retaguardia defendio sucesivamente\n";
+							}
+							if (!winner) {
+								for (int i = 0;i<S2->vSoldados->size();i++) {
+									S4->vSoldados->pop_back();
+								}
 							}
 						}
 						delete S1;

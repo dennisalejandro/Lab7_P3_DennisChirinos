@@ -20,18 +20,15 @@ int main() {
 	int Sq2Num=0;
 	int numSq=0;
 	int numSq2=0;
+	//opciones de switch 1
 	int op = 0;
 	int opA = 0;
 	int opB = 0;
 	int opC = 0;
+	//opciones de switch 5
 	int opSq1A = 0;
 	int opSq1B = 0;
 	int opSq2A = 0;
-	try {
-
-	} catch (const std::exception& e) {
-    		cout << "excepciono\n";
-	}
 	int opSq2B = 0;
 	bool isPossible = false;
 	while (op!=5) {

@@ -18,6 +18,7 @@ int main() {
 	int Sq1Num=0;
 	int Sq2Num=0;
 	int numSq=0;
+	int numSq2=0;
 	int op = 0;
 	int opA = 0;
 	int opB = 0;
@@ -42,7 +43,7 @@ int main() {
 						Squad* B = new Squad(0,0,Sq2Num);
 						Sq2Num++;
 						Army2->push_back(B);
-						numSq++;
+						numSq2++;
 					} else {
 						
 					}
